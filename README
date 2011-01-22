@@ -1,0 +1,34 @@
+
+  // The Unicode Nazi //
+
+    Once enabled the unicode nazi will complain whenever something is not
+    purely unicode or bytestring.  It's annoying as hell and only useful
+    when porting over libraries from Python 2 to Python 3.  It has a huge
+    runtime impact on performance and will also complain about most of the
+    stuff in the Python standard library.
+
+  - usage:
+
+    >>> import unicodenazi
+    >>> 'foo' == u'foo'
+    __main__:1: UnicodeWarning: Implicit conversion of str to unicode
+    True
+
+  - how to disable it again:
+
+    >>> unicodenazi.disable()
+
+  - and here is how to enable:
+
+    >>> unicodenazi.enable()
+
+  - if you want to enable it only for a given block:
+
+    >>> unicodenazi.disable()
+    >>> with unicodenazi.blockwise(enabled=True):
+    ...  assert 'foo' == u'foo'
+    ... 
+    __main__:2: UnicodeWarning: Implicit conversion of str to unicode
+
+    The reverse works too of course.
+
