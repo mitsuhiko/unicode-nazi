@@ -1,0 +1,23 @@
+Unicode Nazi Changelog
+======================
+
+Version 1.2
+-----------
+
+(in development, not yet released)
+
+- Better detect why certain warnings are issued.
+
+Version 1.1
+-----------
+
+Released January 23rd 2011
+
+- support for running the unicode nazi as module
+
+Version 1.0
+-----------
+
+Released January 22nd 2010
+
+- initial release
