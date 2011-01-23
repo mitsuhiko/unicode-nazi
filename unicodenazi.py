@@ -89,6 +89,7 @@ def is_active():
 
 @contextlib.contextmanager
 def blockwise(enabled=True):
+    """Enable or disable the unicode nazi for a block (not threadsafe)."""
     if enabled:
         enable()
     else:
@@ -102,13 +103,26 @@ def blockwise(enabled=True):
             enable()
 
 
+def main():
+    """Run the unicode nazi as script."""
+    global __name__
+    __name__ = 'unicodenazi'
+    if len(sys.argv) < 2:
+        print >> sys.stderr, 'usage: python -municodenazi script'
+        sys.exit(1)
+    import imp
+    main_mod = imp.new_module('__main__')
+    if '__name__' in sys.modules:
+        sys.modules['unicodenazi'] = sys.modules['__name__']
+    sys.modules['__name__'] = main_mod
+    del sys.argv[0]
+    execfile(sys.argv[0], main_mod.__dict__)
+
+
 # register codec and enable
 codecs.register(search_function)
 enable()
 
 
 if __name__=="__main__":
-    if len(sys.argv) > 1:
-        scriptpath = sys.argv[1]
-        del sys.argv[0]
-        execfile(scriptpath)
+    main()
