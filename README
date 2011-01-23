@@ -33,4 +33,7 @@
 
     The reverse works too of course.
 
+The module can be used from a command line:
+
+   $ python -municodenazi your_script.py [script_args..]
 
