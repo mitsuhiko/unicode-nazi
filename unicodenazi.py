@@ -105,3 +105,10 @@ def blockwise(enabled=True):
 # register codec and enable
 codecs.register(search_function)
 enable()
+
+
+if __name__=="__main__":
+    if len(sys.argv) > 1:
+        scriptpath = sys.argv[1]
+        del sys.argv[0]
+        execfile(scriptpath)
